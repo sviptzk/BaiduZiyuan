@@ -1,0 +1,21 @@
+# workflow name
+name: Auto Push
+
+# master branch on push, auto run
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+      - name: 1. 自动提交
+        run: |
+          npm install
+          git clone ${{ secrets.REPO }} .
+          curl -H 'Content-Type:text/plain' --data-binary @baidu_urls.txt "${{secrets.TOKEN}}"
