@@ -13,6 +13,6 @@ jobs:
     steps:
       - name: 1. 自动提交
         run: |
-          git clone ${{ secrets.REPO }}
+          git clone ${{ secrets.REPO }} ./
           ls
           curl -H 'Content-Type:text/plain' --data-binary @baidu_urls.txt "${{secrets.TOKEN}}"
